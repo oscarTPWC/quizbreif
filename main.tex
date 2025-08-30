@@ -1,19 +1,38 @@
 \documentclass[a4paper,11pt]{article}
-\usepackage[margin=20mm]{geometry}
+\usepackage[margin=18mm]{geometry}
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
-\setmainfont{Latin Modern Roman} % safe default on TeX Live
-\usepackage{xcolor,hyperref}
+\setmainfont{Latin Modern Roman}
+\usepackage{xcolor,hyperref,tabularx,array,enumitem}
 \hypersetup{colorlinks=true, urlcolor=black, linkcolor=black}
 \setlength{\parskip}{6pt}
 \setlength{\parindent}{0pt}
 \sloppy
 
-\begin{document}
-{\Large \textbf{Your Property Wealth Code — Briefing}}\\[1mm]
+% ---- Brand palette (adjust later) ----
+\definecolor{brand}{HTML}{0D3B66}
+\definecolor{accent}{HTML}{F4D35E}
+\definecolor{textmuted}{HTML}{4A5568}
+\definecolor{panel}{HTML}{F7FAFC}
 
+% ---- Section helpers ----
+\newcommand{\Section}[1]{\vspace{2pt}\textbf{\large #1}\par}
+\newcommand{\Sub}[1]{\vspace{1pt}\textbf{#1}\par}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\setlist[itemize]{left=1.2em, topsep=2pt, itemsep=2pt}
+
+\begin{document}
+
+% Header
+{\Huge \textbf{Your Property Wealth Code — Briefing}}\par
+{\color{textmuted}\rule{\linewidth}{0.8pt}}
+
+% Inject personalised content
 \input{data.tex}
 
-\smallskip\hrule\smallskip
-\footnotesize \textit{Educational only; not regulated financial advice (UK). Do your own due diligence. Results vary; examples not typical.}
+% Footer (print-friendly)
+\vspace{4pt}
+{\color{textmuted}\rule{\linewidth}{0.5pt}}
+{\footnotesize \textit{Educational only; not regulated financial advice (UK). Do your own due diligence. Results vary; examples not typical.}}
+
 \end{document}
