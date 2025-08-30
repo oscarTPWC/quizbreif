@@ -6,7 +6,7 @@
 \defaultfontfeatures{Ligatures=TeX}
 \setmainfont{Latin Modern Roman}
 
-% --- URLs & links (load url before hyperref for hyphen breaks) ---
+% --- URL + links (hyphenable) ---
 \usepackage[hyphens]{url}
 \usepackage{xcolor,hyperref,tabularx,array,enumitem}
 \hypersetup{
@@ -17,7 +17,7 @@
 }
 \Urlmuskip=0mu plus 1mu
 
-% --- Micro-typography (XeLaTeX: expansion OFF) ---
+% --- Micro-typography (XeLaTeX-safe) ---
 \usepackage{microtype}
 \microtypesetup{protrusion=true, expansion=false}
 
@@ -26,34 +26,47 @@
 \sloppy
 
 % --- Brand palette ---
-\definecolor{brand}{HTML}{0D3B66}
+\definecolor{brand}{HTML}{0D3B66}      % deep blue
 \definecolor{textmuted}{HTML}{4A5568}
 \definecolor{sunyellow}{HTML}{F4D35E}
 \definecolor{skyblue}{HTML}{38BDF8}
 \definecolor{seagreen}{HTML}{2BBBAD}
 \definecolor{panelbg}{HTML}{F7FAFC}
 
-% --- Headings/helpers ---
-\newcommand{\Section}[1]{%
-  \vspace{6pt}\noindent{\Large\bfseries\textcolor{brand}{#1}}\par
-  \noindent{\color{brand}\rule{\linewidth}{0.9pt}}\vspace{2pt}}
-\newcommand{\Sub}[1]{\textbf{\textcolor{brand}{#1}}}
+% --- Lists + columns ---
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \setlist[itemize]{leftmargin=1.2em, topsep=2pt, itemsep=2pt}
 
-% --- CTA buttons & boxes ---
+% --- tcolorbox (headers, buttons, panels) ---
 \usepackage[most]{tcolorbox}
 \tcbset{colframe=brand, colback=white, boxrule=0.8pt}
-\newtcbox{\ButtonYellow}{on line, enhanced, colback=sunyellow!35, colframe=brand,
+
+% Header colour bars
+\newtcolorbox{HdrBlue}{enhanced, colback=skyblue!35, colframe=brand, boxrule=0pt,
+  left=8pt,right=8pt,top=4pt,bottom=4pt, sharp corners}
+\newtcolorbox{HdrYellow}{enhanced, colback=sunyellow!45, colframe=brand, boxrule=0pt,
+  left=8pt,right=8pt,top=4pt,bottom=4pt, sharp corners}
+\newtcolorbox{HdrGreen}{enhanced, colback=seagreen!35, colframe=brand, boxrule=0pt,
+  left=8pt,right=8pt,top=4pt,bottom=4pt, sharp corners}
+\newtcolorbox{HdrBrand}{enhanced, colback=brand, coltext=white, colframe=brand, boxrule=0pt,
+  left=8pt,right=8pt,top=4pt,bottom=4pt, sharp corners}
+
+\newcommand{\SectionBlue}[1]{\begin{HdrBlue}\Large\bfseries #1\end{HdrBlue}}
+\newcommand{\SectionYellow}[1]{\begin{HdrYellow}\Large\bfseries #1\end{HdrYellow}}
+\newcommand{\SectionGreen}[1]{\begin{HdrGreen}\Large\bfseries #1\end{HdrGreen}}
+\newcommand{\SectionBrand}[1]{\begin{HdrBrand}\Large\bfseries #1\end{HdrBrand}}
+
+% CTA buttons & panel
+\newtcbox{\ButtonYellow}{on line, enhanced, colback=sunyellow!50, colframe=brand,
   boxsep=2pt, left=6pt,right=6pt,top=3pt,bottom=3pt, arc=6pt}
-\newtcbox{\ButtonBlue}{on line, enhanced, colback=skyblue!30, colframe=brand,
+\newtcbox{\ButtonBlue}{on line, enhanced, colback=skyblue!45, colframe=brand,
   boxsep=2pt, left=6pt,right=6pt,top=3pt,bottom=3pt, arc=6pt}
-\newtcbox{\ButtonGreen}{on line, enhanced, colback=seagreen!30, colframe=brand,
+\newtcbox{\ButtonGreen}{on line, enhanced, colback=seagreen!45, colframe=brand,
   boxsep=2pt, left=6pt,right=6pt,top=3pt,bottom=3pt, arc=6pt}
 \newtcolorbox{CTAPanel}{enhanced, colback=panelbg, colframe=brand,
   boxrule=0.8pt, arc=2pt, left=6pt,right=6pt,top=6pt,bottom=6pt}
 
-% --- Pull-quote style ---
+% Pull-quote
 \newtcolorbox{pullquote}{enhanced, colback=white, colframe=brand,
   borderline west={3pt}{0pt}{brand}, boxrule=0.6pt, left=8pt,right=6pt,top=6pt,bottom=6pt}
 
@@ -71,7 +84,7 @@
 
 \begin{document}
 
-% --- Header with optional logo slot ---
+% Header with optional logo slot
 \noindent
 \begin{tabularx}{\linewidth}{@{} l X @{}}
 \IfFileExists{logo.pdf}{\includegraphics[height=12mm]{logo.pdf}}{%
