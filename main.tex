@@ -1,30 +1,54 @@
 \documentclass[a4paper,11pt]{article}
-\usepackage[margin=18mm]{geometry}
+\usepackage[left=20mm,right=18mm,top=18mm,bottom=20mm]{geometry}
+
+% --- Fonts & links (XeLaTeX) ---
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
-\setmainfont{Latin Modern Roman}
+\setmainfont{Latin Modern Roman} % safe default
 \usepackage{xcolor,hyperref,tabularx,array,enumitem}
 \hypersetup{colorlinks=true, urlcolor=black, linkcolor=black}
 \setlength{\parskip}{6pt}
 \setlength{\parindent}{0pt}
 \sloppy
 
-% Brand palette (tweak later)
+% --- Brand palette ---
 \definecolor{brand}{HTML}{0D3B66}
 \definecolor{textmuted}{HTML}{4A5568}
+\definecolor{panelbg}{HTML}{F7FAFC}
 
-% Helpers
-\newcommand{\Section}[1]{\vspace{2pt}\textbf{\large #1}\par}
-\newcommand{\Sub}[1]{\vspace{1pt}\textbf{#1}\par}
+% --- Headings helpers ---
+\newcommand{\Section}[1]{%
+  \vspace{6pt}\noindent{\Large\bfseries\textcolor{brand}{#1}}\par
+  \noindent{\color{brand}\rule{\linewidth}{0.9pt}}\vspace{2pt}}
+\newcommand{\Sub}[1]{\textbf{\textcolor{brand}{#1}}}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \setlist[itemize]{leftmargin=1.2em, topsep=2pt, itemsep=2pt}
 
+% --- Coloured margins (left bar + faint right tint) ---
+\usepackage{tikz}
+\usepackage{eso-pic}
+\newcommand\ColouredMargins{%
+\AddToShipoutPicture*{%
+\begin{tikzpicture}[remember picture,overlay]
+  % Left light panel (fits within left margin)
+  \fill[brand!8] (current page.north west) rectangle ([xshift=14mm]current page.south west);
+  % Thin left accent stripe
+  \fill[brand] ([xshift=11mm]current page.north west) rectangle ([xshift=12mm]current page.south west);
+  % Optional very light right edge tint (within right margin)
+  \fill[brand!5] ([xshift=-6mm]current page.north east) rectangle (current page.south east);
+\end{tikzpicture}}}
+\ColouredMargins
+
 \begin{document}
+
+% Title block
 {\Huge \textbf{Your Property Wealth Code — Briefing}}\par
 {\color{textmuted}\rule{\linewidth}{0.6pt}}
 
+% Inject personalised body
 \input{data.tex}
 
+% Footer
 \vspace{4pt}
 {\color{textmuted}\rule{\linewidth}{0.4pt}}
 {\footnotesize \textit{Educational only; not regulated financial advice (UK). Do your own due diligence. Results vary; examples not typical.}}
