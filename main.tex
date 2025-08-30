@@ -9,30 +9,23 @@
 \setlength{\parindent}{0pt}
 \sloppy
 
-% ---- Brand palette (adjust later) ----
+% Brand palette (tweak later)
 \definecolor{brand}{HTML}{0D3B66}
-\definecolor{accent}{HTML}{F4D35E}
 \definecolor{textmuted}{HTML}{4A5568}
-\definecolor{panel}{HTML}{F7FAFC}
 
-% ---- Section helpers ----
+% Helpers
 \newcommand{\Section}[1]{\vspace{2pt}\textbf{\large #1}\par}
 \newcommand{\Sub}[1]{\vspace{1pt}\textbf{#1}\par}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
-\setlist[itemize]{left=1.2em, topsep=2pt, itemsep=2pt}
+\setlist[itemize]{leftmargin=1.2em, topsep=2pt, itemsep=2pt}
 
 \begin{document}
-
-% Header
 {\Huge \textbf{Your Property Wealth Code — Briefing}}\par
-{\color{textmuted}\rule{\linewidth}{0.8pt}}
+{\color{textmuted}\rule{\linewidth}{0.6pt}}
 
-% Inject personalised content
 \input{data.tex}
 
-% Footer (print-friendly)
 \vspace{4pt}
-{\color{textmuted}\rule{\linewidth}{0.5pt}}
+{\color{textmuted}\rule{\linewidth}{0.4pt}}
 {\footnotesize \textit{Educational only; not regulated financial advice (UK). Do your own due diligence. Results vary; examples not typical.}}
-
 \end{document}
