@@ -1,19 +1,30 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage[left=20mm,right=18mm,top=18mm,bottom=20mm]{geometry}
 
-% --- Fonts & links (XeLaTeX) ---
+% --- Fonts & micro-typography (XeLaTeX) ---
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
-\setmainfont{Latin Modern Roman} % safe default
-\usepackage{xcolor,hyperref,tabularx,array,enumitem}
-\hypersetup{colorlinks=true, urlcolor=black, linkcolor=black}
+\setmainfont{Latin Modern Roman}
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+% --- Graphics & color & links ---
+\usepackage{graphicx,xcolor,hyperref,tabularx,array,enumitem}
+\hypersetup{
+  colorlinks=true, urlcolor=black, linkcolor=black,
+  pdfauthor={Mary Cullen | The Property Wealth Code},
+  pdfsubject={Personalised briefing},
+  pdfkeywords={Property Wealth Code, briefing, strategy}
+}
 \setlength{\parskip}{6pt}
 \setlength{\parindent}{0pt}
 \sloppy
 
-% --- Brand palette ---
-\definecolor{brand}{HTML}{0D3B66}
+% --- Brand palette (tweak later) ---
+\definecolor{brand}{HTML}{0D3B66}    % deep blue
 \definecolor{textmuted}{HTML}{4A5568}
+\definecolor{sunyellow}{HTML}{F4D35E}
+\definecolor{skyblue}{HTML}{38BDF8}
+\definecolor{seagreen}{HTML}{2BBBAD}
 \definecolor{panelbg}{HTML}{F7FAFC}
 
 % --- Headings helpers ---
@@ -24,32 +35,57 @@
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \setlist[itemize]{leftmargin=1.2em, topsep=2pt, itemsep=2pt}
 
-% --- Coloured margins (left bar + faint right tint) ---
+% --- CTA buttons & boxes ---
+\usepackage[most]{tcolorbox}
+\tcbset{colframe=brand, colback=white, boxrule=0.8pt}
+\newtcbox{\ButtonYellow}{on line, enhanced, colback=sunyellow!35, colframe=brand,
+  boxsep=2pt, left=6pt,right=6pt,top=3pt,bottom=3pt, arc=6pt}
+\newtcbox{\ButtonBlue}{on line, enhanced, colback=skyblue!30, colframe=brand,
+  boxsep=2pt, left=6pt,right=6pt,top=3pt,bottom=3pt, arc=6pt}
+\newtcbox{\ButtonGreen}{on line, enhanced, colback=seagreen!30, colframe=brand,
+  boxsep=2pt, left=6pt,right=6pt,top=3pt,bottom=3pt, arc=6pt}
+\newtcolorbox{CTAPanel}{enhanced, colback=panelbg, colframe=brand,
+  boxrule=0.8pt, arc=2pt, left=6pt,right=6pt,top=6pt,bottom=6pt}
+
+% --- Pull-quote style ---
+\newtcolorbox{pullquote}{enhanced, colback=white, colframe=brand,
+  borderline west={3pt}{0pt}{brand}, boxrule=0.6pt, left=8pt,right=6pt,top=6pt,bottom=6pt}
+
+% --- Coloured margins (subtle) ---
 \usepackage{tikz}
 \usepackage{eso-pic}
 \newcommand\ColouredMargins{%
 \AddToShipoutPicture*{%
 \begin{tikzpicture}[remember picture,overlay]
-  % Left light panel (fits within left margin)
+  % Left soft panel (inside margin)
   \fill[brand!8] (current page.north west) rectangle ([xshift=14mm]current page.south west);
   % Thin left accent stripe
   \fill[brand] ([xshift=11mm]current page.north west) rectangle ([xshift=12mm]current page.south west);
-  % Optional very light right edge tint (within right margin)
+  % Optional gentle right tint
   \fill[brand!5] ([xshift=-6mm]current page.north east) rectangle (current page.south east);
 \end{tikzpicture}}}
 \ColouredMargins
 
 \begin{document}
 
-% Title block
-{\Huge \textbf{Your Property Wealth Code — Briefing}}\par
+% --- Header with optional logo slot ---
+\noindent
+\begin{tabularx}{\linewidth}{@{} l X @{}}
+\IfFileExists{logo.pdf}{\includegraphics[height=12mm]{logo.pdf}}{%
+  \IfFileExists{logo.png}{\includegraphics[height=12mm]{logo.png}}{}%
+}
+&
+{\Huge \textbf{Your Property Wealth Code — Briefing}}\\
+\end{tabularx}
 {\color{textmuted}\rule{\linewidth}{0.6pt}}
 
 % Inject personalised body
 \input{data.tex}
 
-% Footer
+% Footer: Doc ID + date + disclaimer
 \vspace{4pt}
-{\color{textmuted}\rule{\linewidth}{0.4pt}}
-{\footnotesize \textit{Educational only; not regulated financial advice (UK). Do your own due diligence. Results vary; examples not typical.}}
+{\color{textmuted}\rule{\linewidth}{0.4pt}}\\[-2pt]
+{\footnotesize \textbf{Ref:} PWC-<<DocID>> \quad | \quad \textbf{Date:} \today}\\[-2pt]
+{\footnotesize \textit{Educational content; not regulated financial advice in the UK. We do not recommend or arrange specific investments or credit.
+Results vary and are not typical; context (capital, time, market, licensing) differs. We personalise using your answers; you can opt out any time.}}
 \end{document}
