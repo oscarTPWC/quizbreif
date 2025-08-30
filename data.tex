@@ -1,7 +1,7 @@
-% (Optional) Set dynamic PDF title with the client's name
+% PDF title
 \hypersetup{pdftitle={Your Property Wealth Code — Briefing (<<FirstName>>)}}
 
-% SOCIAL PROOF (one line)
+% Social proof
 {\small \textcolor{textmuted}{<<SocialProofLine>>}}
 
 % AT A GLANCE
@@ -11,20 +11,21 @@
 \textbf{Secondary} & <<SecondaryType>> \\
 \end{tabularx}
 
-% QUICK CLARITY
-\Section{Quick clarity}
+% QUICK CLARITY (sky blue bar)
+\SectionBlue{Quick clarity}
 {\small <<Summary>>}
 
-% STRENGTHS / WATCH-OUTS
+% STRENGTHS & WATCH-OUTS (sun yellow bar)
+\SectionYellow{Strengths \& Watch-outs}
 \begin{tabularx}{\linewidth}{@{} Y Y @{}}
-\Sub{Your strengths}
+\textbf{Your strengths}
 \begin{itemize}
   \item <<Strength1>>
   \item <<Strength2>>
   \item <<Strength3>>
 \end{itemize}
 &
-\Sub{Watch-outs}
+\textbf{Watch-outs}
 \begin{itemize}
   \item <<Risk1>>
   \item <<Risk2>>
@@ -32,20 +33,21 @@
 \end{itemize}
 \end{tabularx}
 
-% MICRO-FORKS
-\Section{If this is you…}
+% MICRO-FORKS (sea green bar)
+\SectionGreen{If this is you…}
 {\small \textbf{Busy / low-capital:} <<BusyLine>> \quad | \quad \textbf{More capital available:} <<CapitalLine>>}
 
-% QUICK WINS + KPI
+% ACTION SNAPSHOT (sky blue bar) — quick wins + KPIs
+\SectionBlue{Action snapshot}
 \begin{tabularx}{\linewidth}{@{} Y Y @{}}
-\Sub{7-day quick wins}
+\textbf{7-day quick wins}
 \begin{itemize}
   \item <<QuickWin1>>
   \item <<QuickWin2>>
   \item <<QuickWin3>>
 \end{itemize}
 &
-\Sub{Track this}
+\textbf{Track this}
 \begin{itemize}
   \item <<KPI1>>
   \item <<KPI2>>
@@ -58,8 +60,8 @@
 \hfill — \textbf{Mary Cullen}
 \end{pullquote}
 
-% NEXT STEPS (boxed with distinct buttons + print-safe URLs)
-\Section{Next steps (pick one today)}
+% NEXT STEPS (sea green bar + CTA panel)
+\SectionGreen{Next steps (pick one today)}
 \begin{CTAPanel}
 \noindent
 \ButtonYellow{\textbf{Debrief eBook (£35)}}\quad
