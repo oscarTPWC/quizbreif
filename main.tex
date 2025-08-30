@@ -1,9 +1,19 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage[margin=20mm]{geometry}
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{Latin Modern Roman} % safe default on TeX Live
 \usepackage{xcolor,hyperref}
-\hypersetup{colorlinks=true,urlcolor=black}
-\usepackage{fontspec}              % XeLaTeX: full UTF-8 support
-\setmainfont{Latin Modern Roman}   % or another installed font
+\hypersetup{colorlinks=true, urlcolor=black, linkcolor=black}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+\sloppy
+
 \begin{document}
-% ... \input{data.tex}
+{\Large \textbf{Your Property Wealth Code — Briefing}}\\[1mm]
+
+\input{data.tex}
+
+\smallskip\hrule\smallskip
+\footnotesize \textit{Educational only; not regulated financial advice (UK). Do your own due diligence. Results vary; examples not typical.}
 \end{document}
