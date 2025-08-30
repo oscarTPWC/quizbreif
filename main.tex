@@ -6,9 +6,9 @@
 \defaultfontfeatures{Ligatures=TeX}
 \setmainfont{Latin Modern Roman}
 
-% --- URL + links (hyphenable) ---
+% --- URLs & links (hyphenable) ---
 \usepackage[hyphens]{url}
-\usepackage{xcolor,hyperref,tabularx,array,enumitem}
+\usepackage{xcolor,hyperref,tabularx,array,enumitem,graphicx}
 \hypersetup{
   colorlinks=true, urlcolor=black, linkcolor=black,
   pdfauthor={Mary Cullen | The Property Wealth Code},
@@ -17,7 +17,7 @@
 }
 \Urlmuskip=0mu plus 1mu
 
-% --- Micro-typography (XeLaTeX-safe) ---
+% --- Micro-typography (XeLaTeX-safe: no expansion) ---
 \usepackage{microtype}
 \microtypesetup{protrusion=true, expansion=false}
 
@@ -40,6 +40,14 @@
 % --- tcolorbox (headers, buttons, panels) ---
 \usepackage[most]{tcolorbox}
 \tcbset{colframe=brand, colback=white, boxrule=0.8pt}
+
+% Title bar (brand bg + yellow accent)
+\newtcolorbox{TitleBar}{
+  enhanced, colback=brand, coltext=white, colframe=brand,
+  boxrule=0pt, sharp corners,
+  left=8pt,right=8pt,top=6pt,bottom=6pt,
+  borderline south={2pt}{0pt}{sunyellow}
+}
 
 % Header colour bars
 \newtcolorbox{HdrBlue}{enhanced, colback=skyblue!35, colframe=brand, boxrule=0pt,
@@ -84,18 +92,19 @@
 
 \begin{document}
 
-% Header with optional logo slot
-\noindent
+% --- Bold, coloured page title with optional logo ---
+\begin{TitleBar}
 \begin{tabularx}{\linewidth}{@{} l X @{}}
 \IfFileExists{logo.pdf}{\includegraphics[height=12mm]{logo.pdf}}{%
   \IfFileExists{logo.png}{\includegraphics[height=12mm]{logo.png}}{}%
 }
 &
-{\Huge \textbf{Your Property Wealth Code — Briefing}}\\
+{\bfseries\fontsize{24pt}{26pt}\selectfont Your Property Wealth Code — Briefing}
 \end{tabularx}
-{\color{textmuted}\rule{\linewidth}{0.6pt}}
+\end{TitleBar}
+\vspace{4pt}
 
-% Inject personalised body
+% Inject personalised body (defines section blocks & content)
 \input{data.tex}
 
 % Footer: Doc ID + date + disclaimer
