@@ -1,33 +1,39 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage[left=20mm,right=18mm,top=18mm,bottom=20mm]{geometry}
 
-% --- Fonts & micro-typography (XeLaTeX) ---
+% --- Fonts (XeLaTeX) ---
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
 \setmainfont{Latin Modern Roman}
-\usepackage[protrusion=true,expansion=true]{microtype}
 
-% --- Graphics & color & links ---
-\usepackage{graphicx,xcolor,hyperref,tabularx,array,enumitem}
+% --- URLs & links (load url before hyperref for hyphen breaks) ---
+\usepackage[hyphens]{url}
+\usepackage{xcolor,hyperref,tabularx,array,enumitem}
 \hypersetup{
   colorlinks=true, urlcolor=black, linkcolor=black,
   pdfauthor={Mary Cullen | The Property Wealth Code},
   pdfsubject={Personalised briefing},
   pdfkeywords={Property Wealth Code, briefing, strategy}
 }
+\Urlmuskip=0mu plus 1mu
+
+% --- Micro-typography (XeLaTeX: expansion OFF) ---
+\usepackage{microtype}
+\microtypesetup{protrusion=true, expansion=false}
+
 \setlength{\parskip}{6pt}
 \setlength{\parindent}{0pt}
 \sloppy
 
-% --- Brand palette (tweak later) ---
-\definecolor{brand}{HTML}{0D3B66}    % deep blue
+% --- Brand palette ---
+\definecolor{brand}{HTML}{0D3B66}
 \definecolor{textmuted}{HTML}{4A5568}
 \definecolor{sunyellow}{HTML}{F4D35E}
 \definecolor{skyblue}{HTML}{38BDF8}
 \definecolor{seagreen}{HTML}{2BBBAD}
 \definecolor{panelbg}{HTML}{F7FAFC}
 
-% --- Headings helpers ---
+% --- Headings/helpers ---
 \newcommand{\Section}[1]{%
   \vspace{6pt}\noindent{\Large\bfseries\textcolor{brand}{#1}}\par
   \noindent{\color{brand}\rule{\linewidth}{0.9pt}}\vspace{2pt}}
@@ -51,17 +57,14 @@
 \newtcolorbox{pullquote}{enhanced, colback=white, colframe=brand,
   borderline west={3pt}{0pt}{brand}, boxrule=0.6pt, left=8pt,right=6pt,top=6pt,bottom=6pt}
 
-% --- Coloured margins (subtle) ---
+% --- Coloured margins ---
 \usepackage{tikz}
 \usepackage{eso-pic}
 \newcommand\ColouredMargins{%
 \AddToShipoutPicture*{%
 \begin{tikzpicture}[remember picture,overlay]
-  % Left soft panel (inside margin)
   \fill[brand!8] (current page.north west) rectangle ([xshift=14mm]current page.south west);
-  % Thin left accent stripe
   \fill[brand] ([xshift=11mm]current page.north west) rectangle ([xshift=12mm]current page.south west);
-  % Optional gentle right tint
   \fill[brand!5] ([xshift=-6mm]current page.north east) rectangle (current page.south east);
 \end{tikzpicture}}}
 \ColouredMargins
