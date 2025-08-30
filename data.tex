@@ -1,3 +1,9 @@
+% (Optional) Set dynamic PDF title with the client's name
+\hypersetup{pdftitle={Your Property Wealth Code — Briefing (<<FirstName>>)}}
+
+% SOCIAL PROOF (one line)
+{\small \textcolor{textmuted}{<<SocialProofLine>>}}
+
 % AT A GLANCE
 \begin{tabularx}{\linewidth}{@{} l Y @{}}
 \textbf{Name} & \textbf{<<FirstName>>} \\
@@ -46,20 +52,26 @@
 \end{itemize}
 \end{tabularx}
 
-% TRAP + QUOTE
-\Section{Common trap to avoid}
-{\small <<TrapLine>>}
+% PULL QUOTE
+\begin{pullquote}
+\emph{“<<MaryQuote>>”}\\
+\hfill — \textbf{Mary Cullen}
+\end{pullquote}
 
-\emph{“<<MaryQuote>>” — Mary Cullen}
-
-% NEXT STEPS (compact callout; \url keeps placeholders safe)
+% NEXT STEPS (boxed with distinct buttons + print-safe URLs)
 \Section{Next steps (pick one today)}
-{\small
-\begin{itemize}
-  \item \textbf{Debrief eBook (£35)} — \url{<<CTA_EbookURL>>}
-  \item \textbf{+ Worksheets (+£9)} — \url{<<CTA_WorksheetsURL>>}
-  \item \textbf{Book a £65 call} — \url{<<CTA_CallURL>>}
-  \item \textbf{Join the waitlist} — \url{<<CTA_WaitlistURL>>}
-\end{itemize}
+\begin{CTAPanel}
+\noindent
+\ButtonYellow{\textbf{Debrief eBook (£35)}}\quad
+\ButtonBlue{\textbf{+ Worksheets (+£9)}}\quad
+\ButtonGreen{\textbf{Book a £65 call}}\quad
+\ButtonBlue{\textbf{Join the waitlist}}\\[3pt]
+{\footnotesize
+\textit{Links: }
+\url{<<CTA_EbookURL>>} \quad|\quad
+\url{<<CTA_WorksheetsURL>>} \quad|\quad
+\url{<<CTA_CallURL>>} \quad|\quad
+\url{<<CTA_WaitlistURL>>} \\
 Deeper tailoring? Take the follow-up quiz: \url{<<DeeperQuizURL>>}
 }
+\end{CTAPanel}
