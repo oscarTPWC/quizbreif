@@ -1,22 +1,67 @@
-\textbf{<<FirstName>>}, your Primary Code is \textbf{<<PrimaryType>>} (Secondary: <<SecondaryType>>).\\[3mm]
+% AT A GLANCE
+\begin{tabularx}{\linewidth}{@{} l Y @{}}
+\textbf{Name} & \textbf{<<FirstName>>} \\
+\textbf{Primary} & \textbf{<<PrimaryType>>} \\
+\textbf{Secondary} & <<SecondaryType>> \\
+\end{tabularx}
 
-\textbf{Quick clarity} — <<Summary>>\\[2mm]
+% QUICK CLARITY
+\Section{Quick clarity}
+{\small <<Summary>>}
 
-\textbf{Your strengths}
+% STRENGTHS / WATCH-OUTS (two short lists)
+\begin{tabularx}{\linewidth}{@{} Y Y @{}}
+\Sub{Your strengths}
 \begin{itemize}
   \item <<Strength1>>
   \item <<Strength2>>
   \item <<Strength3>>
 \end{itemize}
-
-\textbf{Watch-outs}
+&
+\Sub{Watch-outs}
 \begin{itemize}
   \item <<Risk1>>
   \item <<Risk2>>
   \item <<Risk3>>
 \end{itemize}
+\end{tabularx}
 
-\emph{“<<MaryQuote>>” — Mary Cullen}\\[2mm]
+% MICRO-FORKS (kept tiny; deeper detail lives in paid debrief)
+\Section{If this is you…}
+{\small \textbf{Busy / low-capital:} <<BusyLine>> \quad | \quad \textbf{More capital available:} <<CapitalLine>>}
 
-\textbf{Next steps:} Debrief eBook (£35) · +Worksheets (+£9) · Book a £65 call · Join waitlist.\\
+% QUICK WINS + KPI (compact, actionable, not giving away the whole playbook)
+\begin{tabularx}{\linewidth}{@{} Y Y @{}}
+\Sub{7-day quick wins}
+\begin{itemize}
+  \item <<QuickWin1>>
+  \item <<QuickWin2>>
+  \item <<QuickWin3>>
+\end{itemize}
+&
+\Sub{Track this}
+\begin{itemize}
+  \item <<KPI1>>
+  \item <<KPI2>>
+\end{itemize}
+\end{tabularx}
+
+% TRAP + QUOTE
+\Section{Common trap to avoid}
+{\small <<TrapLine>>}
+
+\emph{“<<MaryQuote>>” — Mary Cullen}
+
+% NEXT STEPS (CTA panel)
+\vspace{4pt}
+\noindent{\color{brand}\rule{\linewidth}{0.8pt}}
+\Sub{Next steps (pick one today)}
+{\small
+\begin{itemize}
+  \item \textbf{Debrief eBook (£35)}: \href{<<CTA_EbookURL>>}{download}
+  \item \textbf{+ Worksheets (+£9)}: \href{<<CTA_WorksheetsURL>>}{add pack}
+  \item \textbf{Book a £65 call}: \href{<<CTA_CallURL>>}{calendar}
+  \item \textbf{Join the waitlist}: \href{<<CTA_WaitlistURL>>}{community}
+\end{itemize}
 Deeper tailoring? Take the follow-up quiz: \url{<<DeeperQuizURL>>}
+}
